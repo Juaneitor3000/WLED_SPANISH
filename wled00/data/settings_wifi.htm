@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
 	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
-	<title>WiFi Settings</title>
+	<title>Ajustes WiFi</title>
 	<script>
 		var d = document;
 		var loc = false, locip, locproto = "http:";
@@ -150,56 +150,56 @@
 	<form id="form_s" name="Sf" method="post">
 		<div class="toprow">
 		<div class="helpB"><button type="button" onclick="H()">?</button></div>
-		<button type="button" onclick="B()">Back</button><button type="submit">Save & Connect</button><hr>
+		<button type="button" onclick="B()">Volver</button><button type="submit">Guardar/Conectar</button><hr>
 		</div>
-		<h2>WiFi setup</h2>
-		<h3>Connect to existing network</h3>
-		<button type="button" id="scan" onclick="N()">Scan</button><br>
-		Network name (SSID, empty to not connect):<br>
+		<h2>Configuración WiFi</h2>
+		<h3>Conectar a una red existente</h3>
+		<button type="button" id="scan" onclick="N()">Buscar</button><br>
+		Nombre de la red (SSID, vacio para no conectar):<br>
 		<input type="text" id="CS" name="CS" maxlength="32"><br>
-		Network password: <br> <input type="password" name="CP" maxlength="63"><br>
-		Static IP (leave at 0.0.0.0 for DHCP):<br>
+		Password de la red: <br> <input type="password" name="CP" maxlength="63"><br>
+		IP estática (dejar en 0.0.0.0 para DHCP):<br>
 		<input name="I0" type="number" class="s" min="0" max="255" required> .
 		<input name="I1" type="number" class="s" min="0" max="255" required> .
 		<input name="I2" type="number" class="s" min="0" max="255" required> .
 		<input name="I3" type="number" class="s" min="0" max="255" required><br>
-		Static gateway:<br>
+		Gateway estático:<br>
 		<input name="G0" type="number" class="s" min="0" max="255" required> .
 		<input name="G1" type="number" class="s" min="0" max="255" required> .
 		<input name="G2" type="number" class="s" min="0" max="255" required> .
 		<input name="G3" type="number" class="s" min="0" max="255" required><br>
-		Static subnet mask:<br>
+		Máscara de subred estática:<br>
 		<input name="S0" type="number" class="s" min="0" max="255" required> .
 		<input name="S1" type="number" class="s" min="0" max="255" required> .
 		<input name="S2" type="number" class="s" min="0" max="255" required> .
 		<input name="S3" type="number" class="s" min="0" max="255" required><br>
-		mDNS address (leave empty for no mDNS):<br>
+		Dirección mDNS (dejar vacío para no usar mDNS):<br>
 		http:// <input type="text" name="CM" maxlength="32"> .local<br>
-		Client IP: <span class="sip"> Not connected </span> <br>
-		<h3>Configure Access Point</h3>
-		AP SSID (leave empty for no AP):<br> <input type="text" name="AS" maxlength="32"><br>
-		Hide AP name: <input type="checkbox" name="AH"><br>
-		AP password (leave empty for open):<br> <input type="password" name="AP" maxlength="63" pattern="(.{8,63})|()" title="Empty or min. 8 characters"><br>
-		Access Point WiFi channel: <input name="AC" type="number" class="xs" min="1" max="13" required><br>
-		AP opens:
+		IP cliente: <span class="sip"> No conectado</span> <br>
+		<h3>Configurar punto de acceso</h3>
+		AP SSID (dejar vacío para no AP):<br> <input type="text" name="AS" maxlength="32"><br>
+		Ocultar nombre AP: <input type="checkbox" name="AH"><br>
+		Password del AP (dejar vacío para abiero):<br> <input type="password" name="AP" maxlength="63" pattern="(.{8,63})|()" title="Empty or min. 8 characters"><br>
+		Canal punto acceso WiFi : <input name="AC" type="number" class="xs" min="1" max="13" required><br>
+		Abrir AP:
 		<select name="AB">
-		<option value="0">No connection after boot</option>
-		<option value="1">Disconnected</option>
-		<option value="2">Always</option>
-		<option value="3">Never (not recommended)</option></select><br>
-		AP IP: <span class="sip"> Not active </span><br>
+		<option value="0">Sin conexión despues de cargar</option>
+		<option value="1">Desconectado</option>
+		<option value="2">Siempre</option>
+		<option value="3">Nunca (no recomendado)</option></select><br>
+		AP IP: <span class="sip"> No activo </span><br>
 		<h3>Experimental</h3>
-		Force 802.11g mode (ESP8266 only): <input type="checkbox" name="FG"><br>
-		Disable WiFi sleep: <input type="checkbox" name="WS"><br>
-		<i>Can help with connectivity issues.<br>
-		Do not enable if WiFi is working correctly, increases power consumption.</i>
+		Forzar modo 802.11g (solo ESP8266): <input type="checkbox" name="FG"><br>
+		Desactivar WiFi sleep: <input type="checkbox" name="WS"><br>
+		<i>Puede ayudar con problemas de conectividad.<br>
+		No activar si el WiFi funciona correctamente, incrementa el conumo de energía.</i>
 
 		<div id="remd">
-			<h3>Wireless Remote</h3>
-			<i>Listen for events over ESP-NOW<br>
-			Keep disabled if not using a remote, increases power consumption.<br></i>
+			<h3>Remoto inalámbrico</h3>
+			<i>Escuchar eventos sobre ESP-NOW<br>
+			Mantener inactivo si no usa remoto, incrementa el conumo de energía.<br></i>
 		
-			Enable Remote: <input type="checkbox" name="RE"><br>
+			Habilitar Remoto: <input type="checkbox" name="RE"><br>
 			Hardware MAC: <input type="text" name="RMAC"><br>
 			Last Seen: <span class="rlid">None</span> <br>
 		</div>
@@ -221,7 +221,7 @@
 			</select><br><br>
 		</div>
 		<hr>
-		<button type="button" onclick="B()">Back</button><button type="submit">Save & Connect</button>
+		<button type="button" onclick="B()">Volver</button><button type="submit">Guardar y Conectar</button>
 	</form>
 </body>
 </html>

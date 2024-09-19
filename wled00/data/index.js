@@ -550,7 +550,7 @@ function populateQL()
 	var cn = "";
 	if (pQL.length > 0) {
 		pQL.sort((a,b) => (a[0]>b[0]));
-		cn += `<p class="labels hd">Quick load</p>`;
+		cn += `<p class="labels hd">Carga rápida</p>`;
 		for (var key of (pQL||[])) {
 			cn += `<button class="btn btn-xs psts" id="p${key[0]}qlb" title="${key[2]?key[2]:''}" onclick="setPreset(${key[0]});">${key[1]}</button>`;
 		}
@@ -763,7 +763,7 @@ function populateSegments(s)
 				`</label>`+
 				`<div class="segname" onclick="selSegEx(${i})">`+
 					`<i class="icons e-icon frz" id="seg${i}frz" onclick="event.preventDefault();tglFreeze(${i});">&#x${inst.frz ? (li.live && li.liveseg==i?'e410':'e0e8') : 'e325'};</i>`+
-					(inst.n ? inst.n : "Segment "+i) +
+					(inst.n ? inst.n : "Segmento "+i) +
 					`<div class="pop hide" onclick="event.preventDefault();event.stopPropagation();">`+
 						`<i class="icons g-icon" style="color:${cG};" onclick="this.nextElementSibling.classList.toggle('hide');">&#x278${String.fromCharCode(inst.set+"A".charCodeAt(0))};</i>`+
 						`<div class="pop-c hide"><span style="color:var(--c-f);" onclick="setGrp(${i},0);">&#x278A;</span><span style="color:var(--c-r);" onclick="setGrp(${i},1);">&#x278B;</span><span style="color:var(--c-g);" onclick="setGrp(${i},2);">&#x278C;</span><span style="color:var(--c-l);" onclick="setGrp(${i},3);">&#x278D;</span></div>`+
@@ -1396,7 +1396,7 @@ function readState(s,command=false)
 		hasCCT   = !!(lc & 0x04);
 	}
 	if (!i) {
-		showToast('No Segments!', true);
+		showToast('Sin Segmentos!', true);
 		updateUI();
 		return true;
 	}
@@ -1572,10 +1572,10 @@ function setEffectParameters(idx)
 			paOnOff[0] = paOnOff[0].substring(0,dPos);
 		}
 		if (paOnOff.length>0 && paOnOff[0] != "!") pall.innerHTML = paOnOff[0];
-		else                                       pall.innerHTML = '<i class="icons sel-icon" onclick="tglHex()">&#xe2b3;</i> Color palette';
+		else                                       pall.innerHTML = '<i class="icons sel-icon" onclick="tglHex()">&#xe2b3;</i> Paleta de colores';
 	} else {
 		// disable palette list
-		pall.innerHTML = '<i class="icons sel-icon" onclick="tglHex()">&#xe2b3;</i> Color palette not used';
+		pall.innerHTML = '<i class="icons sel-icon" onclick="tglHex()">&#xe2b3;</i> Paleta de colores sin uso';
 		palw.style.display = "none";
 	}
 	// not all color selectors shown, hide palettes created from color selectors
@@ -1756,7 +1756,7 @@ function makeSeg()
 	});
 	var cn = `<div class="seg lstI expanded">`+
 		`<div class="segin">`+
-			`<input type="text" id="seg${lu}t" autocomplete="off" maxlength=32 value="" placeholder="New segment ${lu}"/>`+
+			`<input type="text" id="seg${lu}t" autocomplete="off" maxlength=32 value="" placeholder="Nuevo segmento ${lu}"/>`+
 			`<table class="segt">`+
 				`<tr>`+
 					`<td width="38%">${isM?'Start X':'Start LED'}</td>`+
@@ -1784,7 +1784,7 @@ function resetUtil(off=false)
 {
 	gId('segutil').innerHTML = `<div class="seg btn btn-s${off?' off':''}" style="padding:0;">`
 	+ '<label class="check schkl"><input type="checkbox" id="selall" onchange="selSegAll(this)"><span class="checkmark"></span></label>'
-	+ `<div class="segname" ${off?'':'onclick="makeSeg()"'}><i class="icons btn-icon">&#xe18a;</i>Add segment</div>`
+	+ `<div class="segname" ${off?'':'onclick="makeSeg()"'}><i class="icons btn-icon">&#xe18a;</i>Añadir segmento</div>`
 	+ '<div class="pop hide" onclick="event.stopPropagation();">'
 	+ `<i class="icons g-icon" onclick="this.nextElementSibling.classList.toggle('hide');">&#xE34B;</i>`
 	+ '<div class="pop-c hide"><span style="color:var(--c-f);" onclick="selGrp(0);">&#x278A;</span><span style="color:var(--c-r);" onclick="selGrp(1);">&#x278B;</span><span style="color:var(--c-g);" onclick="selGrp(2);">&#x278C;</span><span style="color:var(--c-l);" onclick="selGrp(3);">&#x278D;</span></div>'
@@ -1998,8 +1998,8 @@ function makePlEntry(p,i)
 		<td class="c">#${i+1}</td>
 	</tr>
 	<tr>
-		<td class="c" width="40%"><input class="segn" type="number" placeholder="Duration" max=6553.0 min=0.2 step=0.1 oninput="pleDur(${p},${i},this)" value="${plJson[p].dur[i]/10.0}">s</td>
-		<td class="c" width="40%"><input class="segn" type="number" placeholder="Transition" max=65.0 min=0.0 step=0.1 oninput="pleTr(${p},${i},this)" value="${plJson[p].transition[i]/10.0}">s</td>
+		<td class="c" width="40%"><input class="segn" type="number" placeholder="Duración" max=6553.0 min=0.2 step=0.1 oninput="pleDur(${p},${i},this)" value="${plJson[p].dur[i]/10.0}">s</td>
+		<td class="c" width="40%"><input class="segn" type="number" placeholder="Transición" max=65.0 min=0.0 step=0.1 oninput="pleTr(${p},${i},this)" value="${plJson[p].transition[i]/10.0}">s</td>
 		<td class="c"><button class="btn btn-pl-del" onclick="delPl(${p},${i})"><i class="icons btn-icon">&#xe037;</i></button></div></td>
 	</tr>
 	</table>

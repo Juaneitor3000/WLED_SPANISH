@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
-	<title>LED Settings</title>
+	<title>Ajustes LED</title>
 	<script>
 		var d=document,laprev=55,maxB=1,maxV=0,maxM=4000,maxPB=4096,maxL=1333,maxLbquot=0; //maximum bytes for LED allocation: 4kB for 8266, 32kB for 32
 		d.um_p = [];
@@ -690,7 +690,7 @@ Length: <input type="number" name="XC${i}" id="xc${i}" class="l" min="1" max="65
 		<button type="button" onclick="B()">Back</button><button type="submit">Save</button><hr>
 		</div>
 		<h2>LED &amp; Hardware setup</h2>
-		Total LEDs: <span id="lc">?</span> <span id="pc"></span><br>
+		LEDs totales: <span id="lc">?</span> <span id="pc"></span><br>
 		<i>Recommended power supply for brightest white:</i><br>
 		<b><span id="psu">?</span></b><br>
 		<span id="psu2"><br></span>
@@ -720,11 +720,11 @@ Length: <input type="number" name="XC${i}" id="xc${i}" class="l" min="1" max="65
 			<i>Keep at default if you are unsure about your type of LEDs.</i><br>
 		</div>
 		<h3>Hardware setup</h3>
-		<div id="mLC">LED outputs:</div>
+		<div id="mLC">Salidas LED:</div>
 		<hr class="sml">
 		<button type="button" id="+" onclick="addLEDs(1,false)">+</button>
 		<button type="button" id="-" onclick="addLEDs(-1,false)">-</button><br>
-		LED Memory Usage: <span id="m0">0</span> / <span id="m1">?</span> B<br>
+		LED Uso de memoria: <span id="m0">0</span> / <span id="m1">?</span> B<br>
 		<div id="dbar" style="display:inline-block; width: 100px; height: 10px; border-radius: 20px;"></div><br>
 		<div id="ledwarning" class="warn" style="display: none;">
 			&#9888; You might run into stability or lag issues.<br>
@@ -762,33 +762,33 @@ Length: <input type="number" name="XC${i}" id="xc${i}" class="l" min="1" max="65
 		<a href="https://kno.wled.ge/interfaces/infrared/" target="_blank">IR info</a><br>
 		Relay GPIO: <input type="number" min="-1" max="48" name="RL" onchange="UI()" class="xs"> Invert <input type="checkbox" name="RM"><span style="cursor: pointer;" onclick="off('RL')">&nbsp;&#x2715;</span><br>
 		<hr class="sml">
-		<h3>Defaults</h3>
-		Turn LEDs on after power up/reset: <input type="checkbox" name="BO"><br>
-		Default brightness: <input name="CA" type="number" class="m" min="0" max="255" required> (0-255)<br><br>
-		Apply preset <input name="BP" type="number" class="m" min="0" max="250" required> at boot (0 uses defaults)
+		<h3>Predeterminados</h3>
+		Encender leds luego de reset: <input type="checkbox" name="BO"><br>
+		Brillo predeterminado: <input name="CA" type="number" class="m" min="0" max="255" required> (0-255)<br><br>
+		Aplicar preset <input name="BP" type="number" class="m" min="0" max="250" required> at boot (0 uses defaults)
 		<br><br>
 		Use Gamma correction for color: <input type="checkbox" name="GC"> (strongly recommended)<br>
 		Use Gamma correction for brightness: <input type="checkbox" name="GB"> (not recommended)<br>
 		Use Gamma value: <input name="GV" type="number" class="m" placeholder="2.8" min="1" max="3" step="0.1" required><br><br>
-		Brightness factor: <input name="BF" type="number" class="m" min="1" max="255" required> %
-		<h3>Transitions</h3>
+		Factor de brillo: <input name="BF" type="number" class="m" min="1" max="255" required> %
+		<h3>Transiciones</h3>
 		Crossfade: <input type="checkbox" name="TF"><br>
 		Effect blending: <input type="checkbox" name="EB"><br>
-		Transition Time: <input name="TD" type="number" class="xl" min="0" max="65500"> ms<br>
+		Tiempo de Transición: <input name="TD" type="number" class="xl" min="0" max="65500"> ms<br>
 		Enable Palette transitions: <input type="checkbox" name="PF"><br>
-		<i>Random Cycle</i> Palette Time: <input name="TP" type="number" class="m" min="1" max="255"> s<br>
-		<h3>Timed light</h3>
-		Default Duration: <input name="TL" type="number" class="m" min="1" max="255" required> min<br>
-		Default Target brightness: <input name="TB" type="number" class="m" min="0" max="255" required><br>
-		Mode:
+		<i>Ciclo aleatorio</i> Tiempo de paleta : <input name="TP" type="number" class="m" min="1" max="255"> s<br>
+		<h3>Luz temporizada</h3>
+		Duración predeterminada: <input name="TL" type="number" class="m" min="1" max="255" required> min<br>
+		Brillo objetivo predeterminado: <input name="TB" type="number" class="m" min="0" max="255" required><br>
+		Modo:
 		<select name="TW">
 			<option value="0">Wait and set</option>
 			<option value="1">Fade</option>
 			<option value="2">Fade Color</option>
 			<option value="3">Sunrise</option>
 		</select>
-		<h3>White management</h3>
-		White Balance correction: <input type="checkbox" name="CCT"><br>
+		<h3>Manejo de blanco</h3>
+		Corrección de balance de blanco: <input type="checkbox" name="CCT"><br>
 		<div id="wc">
 			Global override for Auto-calculate white:<br>
 			<select name="AW">
@@ -803,7 +803,7 @@ Length: <input type="number" name="XC${i}" id="xc${i}" class="l" min="1" max="65
 			Calculate CCT from RGB: <input type="checkbox" name="CR"><br>
 			CCT additive blending: <input type="number" class="s" min="0" max="100" name="CB" required> %
 		</div>
-		<h3>Advanced</h3>
+		<h3>Advanzado</h3>
 		Palette blending:
 		<select name="PB">
 			<option value="0">Linear (wrap if moving)</option>
@@ -811,11 +811,11 @@ Length: <input type="number" name="XC${i}" id="xc${i}" class="l" min="1" max="65
 			<option value="2">Linear (never wrap)</option>
 			<option value="3">None (not recommended)</option>
 		</select><br>
-		Target refresh rate: <input type="number" class="s" min="1" max="120" name="FR" required> FPS
+		Tasa de refresco objetivo: <input type="number" class="s" min="1" max="120" name="FR" required> FPS
 		<hr class="sml">
-		<div id="cfg">Config template: <input type="file" name="data2" accept=".json"><button type="button" class="sml" onclick="loadCfg(d.Sf.data2)">Apply</button><br></div>
+		<div id="cfg">Config template: <input type="file" name="data2" accept=".json"><button type="button" class="sml" onclick="loadCfg(d.Sf.data2)">Aplicar</button><br></div>
 		<hr>
-		<button type="button" onclick="B()">Back</button><button type="submit">Save</button>
+		<button type="button" onclick="B()">Volver</button><button type="submit">Guardar</button>
 	</form>
 	<div id="toast"></div>
 </body>
