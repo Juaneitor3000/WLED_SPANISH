@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
-	<title>UI Settings</title>
+	<title>Ajustes Interfaz (UI)</title>
 	<script>
 	var d = document;
 	var loc = false, locip, locproto = "http:";
@@ -11,32 +11,32 @@
 	var sett = null;
 	var l = {
 		"comp":{
-			"labels":"Show button labels",
+			"labels":"Mostrar etiqueta de botones",
 			"colors":{
-				"LABEL":"Color selection methods",
-				"picker": "Color Wheel",
-				"rgb": "RGB sliders",
-				"quick": "Quick color selectors",
-				"hex": "HEX color input"
+				"LABEL":"Método de selección de color",
+				"picker": "Rueda de color",
+				"rgb": "Deslizador RGB",
+				"quick": "Selector rápido color",
+				"hex": "Color en HEX"
 				},
-			"pcmbot": "Show bottom tab bar in PC mode",
-			"pid": "Show preset IDs",
-			"seglen": "Set segment length instead of stop LED",
-			"segpwr": "Hide segment power &amp; brightness",
-			"segexp" : "Always expand first segment",
-			"css": "Enable custom CSS",
-			"hdays": "Enable custom Holidays list",
-			"fxdef": "Use effect default parameters",
-			"idsort": "Sort presets by ID"
+			"pcmbot": "Mostrar la barra inferior en modo PC",
+			"pid": "Mostrar ID del preset",
+			"seglen": "Establecer longitud del segmento en lugar de detener LED",
+			"segpwr": "Ocultar brillo y potencia segmento",
+			"segexp" : "Expandir siempre primer segmento",
+			"css": "Habilitar CSS custom",
+			"hdays": "Habiliar lista de festivos custom",
+			"fxdef": "Usar parámetros por defecto del efecto",
+			"idsort": "Ordenar presets por ID."
 		},
 		"theme":{
 			"alpha": {
-				"bg":"Background opacity",
-				"tab":"Button opacity"
+				"bg":"Opacidad del fondo",
+				"tab":"Opacidad del botón"
 			},
 			"bg":{
-				"url":"BG image URL",
-				"random":"Random BG image"
+				"url":"URL imágen fondo",
+				"random":"Imágen ramdon fondo"
 			},
 			"color":{
 				"bg":"BG HEX color"
@@ -254,24 +254,24 @@
 	<form id="form_s" name="Sf" method="post">
 		<div class="toprow">
 		<div class="helpB"><button type="button" onclick="H()">?</button></div>
-		<button type="button" onclick="B()">Back</button><button type="button" onclick="Save()">Save</button><br>
-		<span id="lssuc" style="color:green; display:none">&#10004; Local UI settings saved!</span>
-		<span id="lserr" style="color:red; display:none">&#9888; Could not access local storage. Make sure it is enabled in your browser.</span><hr>
+		<button type="button" onclick="B()">Volver</button><button type="button" onclick="Save()">Salvar</button><br>
+		<span id="lssuc" style="color:green; display:none">&#10004; Ajustes UI locales salvados!</span>
+		<span id="lserr" style="color:red; display:none">&#9888; No es posible acceder al almacenamiento local. Asegurate habilitar en tu navegador.</span><hr>
 		</div>
-		<h2>Web Setup</h2>
-		Server description: <input type="text" name="DS" maxlength="32"><br>
-		Sync button toggles both send and receive: <input type="checkbox" name="ST"><br>
+		<h2>Ajustes de red</h2>
+		Descripción del servidor: <input type="text" name="DS" maxlength="32"><br>
+		El botón de sincronización alterna enviar y recibir.: <input type="checkbox" name="ST"><br>
 		<div id="NoSimple" class="hide">
-			<i class="warn">This firmware build does not include simplified UI support.<br></i>
+			<i class="warn">Este firmware no incluye soporte UI simplificado.<br></i>
 		</div>
-		<div id="Simple">Enable simplified UI: <input type="checkbox" name="SU"><br></div>
-		<i>The following UI customization settings are unique both to the WLED device and this browser.<br>
-		You will need to set them again if using a different browser, device or WLED IP address.<br>
-		Refresh the main UI to apply changes.</i><br>
+		<div id="Simple">Habilitar UI simplificada: <input type="checkbox" name="SU"><br></div>
+		<i>La siguiente configuración es solo para este dispositivo WLED y navegador.<br>
+		Necesitarás configurar de nuevo en caso de otro navegador, dispositivo o dirección IP.<br>
+		Refrescar la UI para aplicar cambios.</i><br>
 		
-		<div id="gen">Loading settings...</div>
+		<div id="gen">Cargando ajustes...</div>
 		
-		<h3>UI Appearance</h3>
+		<h3>Apariencia UI</h3>
 		<span class="l"></span>: <input type="checkbox" id="comp_labels" class="agi cb"><br>
 		<span class="l"></span>: <input type="checkbox" id="comp_pcmbot" class="agi cb"><br>
 		<span class="l"></span>: <input type="checkbox" id="comp_pid" class="agi cb"><br>
@@ -280,21 +280,21 @@
 		<span class="l"></span>: <input type="checkbox" id="comp_segexp" class="agi cb"><br>
 		<span class="l"></span>: <input type="checkbox" id="comp_fxdef" class="agi cb"><br>
 		<span class="l"></span>: <input type="checkbox" id="comp_idsort" class="agi cb"><br>
-		I hate dark mode: <input type="checkbox" id="dm" onchange="UI()"><br>
-		<span id="idonthateyou" style="display:none"><i>Why would you? </i>&#x1F97A;<br></span>
+		Odio el modo oscuro: <input type="checkbox" id="dm" onchange="UI()"><br>
+		<span id="idonthateyou" style="display:none"><i>¿Por qué lo harías? </i>&#x1F97A;<br></span>
 		<span class="l"></span>: <input type="number" min=0.0 max=1.0 step=0.01 id="theme_alpha_tab" class="agi"><br>
 		<span class="l"></span>: <input type="number" min=0.0 max=1.0 step=0.01 id="theme_alpha_bg" class="agi"><br>
 		<span class="l"></span>: <input type="text" id="theme_color_bg" maxlength="9" class="agi"><br>
-		<span class="l">BG image URL</span>: <input type="text" id="theme_bg_url" class="agi" oninput="checkRandomBg()"><br>
-		<span class="l">Random BG image</span>: <input type="checkbox" id="theme_bg_random" class="agi cb" onchange="setRandomBg()"><br>
+		<span class="l">URL de la imágen BG</span>: <input type="text" id="theme_bg_url" class="agi" oninput="checkRandomBg()"><br>
+		<span class="l">Imagen BG aleatoria</span>: <input type="checkbox" id="theme_bg_random" class="agi cb" onchange="setRandomBg()"><br>
 		<input id="theme_base" class="agi" style="display:none">
 		<span class="l"></span>: <input type="checkbox" id="comp_css" class="agi cb"><br>
-		<div id="skin">Custom CSS: <input type="file" name="data" accept=".css"> <input type="button" value="Upload" onclick="uploadFile(d.Sf.data,'/skin.css');"><br></div>
+		<div id="skin">CSS custom: <input type="file" name="data" accept=".css"> <input type="button" value="Upload" onclick="uploadFile(d.Sf.data,'/skin.css');"><br></div>
 		<span class="l"></span>: <input type="checkbox" id="comp_hdays" class="agi cb"><br>
-		<div id="holidays">Holidays: <input type="file" name="data2" accept=".json"> <input type="button" value="Upload" onclick="uploadFile(d.Sf.data2,'/holidays.json');"><br></div>
+		<div id="holidays">Festivos: <input type="file" name="data2" accept=".json"> <input type="button" value="Upload" onclick="uploadFile(d.Sf.data2,'/holidays.json');"><br></div>
 		<div id="toast"></div>
-		<hr><button type="button" onclick="cLS()">Clear local storage</button>
-		<hr><button type="button" onclick="B()">Back</button><button type="button" onclick="Save()">Save</button>
+		<hr><button type="button" onclick="cLS()">Limpiar almacenamiento local</button>
+		<hr><button type="button" onclick="B()">Volver</button><button type="button" onclick="Save()">Salvar</button>
 	</form>
 </body>
 </html>

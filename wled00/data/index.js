@@ -1427,19 +1427,19 @@ function readState(s,command=false)
 	  var errstr = "";
 	  switch (s.error) {
 		case 10:
-		  errstr = "Could not mount filesystem!";
+		  errstr = "No se puede montar el sistema de archivos!";
 		  break;
 		case 11:
-		  errstr = "Not enough space to save preset!";
+		  errstr = "No hay suficiente espacio para salvar el preset!";
 		  break;
 		case 12:
-		  errstr = "Preset not found.";
+		  errstr = "Preset no encontrado.";
 		  break;
 		case 13:
 		  errstr = "Missing ir.json.";
 		  break;
 		case 19:
-		  errstr = "A filesystem error has occured.";
+		  errstr = "A ocurrido un error del sistema de archivos.";
 		  break;
 		}
 	  showToast('Error ' + s.error + ": " + errstr, true);
@@ -1491,8 +1491,8 @@ function setEffectParameters(idx)
 		// if (not controlDefined and for AC speed or intensity and for SR all sliders) or slider has a value
 		if ((!controlDefined && i < ((idx<128)?2:nSliders)) || (slOnOff.length>i && slOnOff[i] != "")) {
 			if (slOnOff.length>i && slOnOff[i]!="!") label.innerHTML = slOnOff[i];
-			else if (i==0)                           label.innerHTML = "Effect speed";
-			else if (i==1)                           label.innerHTML = "Effect intensity";
+			else if (i==0)                           label.innerHTML = "Velocidad";
+			else if (i==1)                           label.innerHTML = "Intensidad";
 			else                                     label.innerHTML = "Custom" + (i-1);
 			slider.classList.remove('hide');
 		} else {
@@ -1676,9 +1676,9 @@ function toggleNl()
 	nlA = !nlA;
 	if (nlA)
 	{
-		showToast(`Timer active. Your light will turn ${nlTar > 0 ? "on":"off"} ${nlMode ? "over":"after"} ${nlDur} minutes.`);
+		showToast(`Temporizador activo. Tus luces se  ${nlTar > 0 ? "encenderán":"apagarán"} ${nlMode ? "sobre":"depués de"} ${nlDur} minutos.`);
 	} else {
-		showToast('Timer deactivated.');
+		showToast('Temporizador desactivado.');
 	}
 	var obj = {"nl": {"on": nlA}};
 	requestJson(obj);
@@ -1687,8 +1687,8 @@ function toggleNl()
 function toggleSync()
 {
 	syncSend = !syncSend;
-	if (syncSend) showToast('Other lights in the network will now sync to this one.');
-	else showToast('This light and other lights in the network will no longer sync.');
+	if (syncSend) showToast('Otras luces en la red se sincronizarán a esta.');
+	else showToast('Esta y otras luces de la red dejarán de sincronizarse.');
 	var obj = {"udpn": {"send": syncSend}};
 	if (syncTglRecv) obj.udpn.recv = syncSend;
 	requestJson(obj);

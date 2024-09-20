@@ -3,7 +3,7 @@
 <head>
 	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
 	<meta charset="utf-8">
-	<title>Time Settings</title>
+	<title>Ajustes de tiempo</title>
 	<script>
 	var d=document;
 	var loc = false, locip, locproto = "http:";
@@ -164,13 +164,13 @@
 	<form id="form_s" name="Sf" method="post" onsubmit="Wd()">
 		<div class="toprow">
 		<div class="helpB"><button type="button" onclick="H()">?</button></div>
-		<button type="button" onclick="B()">Back</button><button type="submit">Save</button><hr>
+		<button type="button" onclick="B()">Volver</button><button type="submit">Salvar</button><hr>
 		</div>
-		<h2>Time setup</h2>
-		Get time from NTP server: <input type="checkbox" name="NT"><br>
+		<h2>Setup de tiempo</h2>
+		Obtener hora de servidor NTP: <input type="checkbox" name="NT"><br>
 		<input type="text" name="NS" maxlength="32"><br>
-		Use 24h format: <input type="checkbox" name="CF"><br>
-		Time zone: 
+		Usar formato 24h: <input type="checkbox" name="CF"><br>
+		Zona horaria: 
 		<select name="TZ">
 			<option value="0" selected>GMT(UTC)</option>
 			<option value="1">GMT/BST</option>
@@ -196,53 +196,53 @@
 			<option value="21">MX-CST</option>
 			<option value="22">PKT (Pakistan)</option>
 		</select><br>
-		UTC offset: <input name="UO" type="number" min="-65500" max="65500" required> seconds (max. 18 hours)<br>
-		Current local time is <span class="times">unknown</span>.<br>
-		Latitude: <select name="LTR"><option value="N">N</option><option value="S">S</option></select><input name="LT" type="number" class="xl" min="0" max="66.6" step="0.01"><br>
-		Longitude: <select name="LNR"><option value="E">E</option><option value="W">W</option></select><input name="LN" type="number" class="xl" min="0" max="180" step="0.01"><br>
-		<button type="button" id="locbtn" onclick="getLoc()">Get location</button>
+		Desplazamiento UTC: <input name="UO" type="number" min="-65500" max="65500" required> seg(max.18 horas)<br>
+		Tiempo local es <span class="times">desconocido</span>.<br>
+		Latitud: <select name="LTR"><option value="N">N</option><option value="S">S</option></select><input name="LT" type="number" class="xl" min="0" max="66.6" step="0.01"><br>
+		Longitud: <select name="LNR"><option value="E">E</option><option value="W">W</option></select><input name="LN" type="number" class="xl" min="0" max="180" step="0.01"><br>
+		<button type="button" id="locbtn" onclick="getLoc()">Obtener localización</button>
 		<div><i>(opens new tab, only works in browser)</i></div>
 		<div id="sun" class="times"></div>
 		<h3>Clock</h3>
-		Analog Clock overlay: <input type="checkbox" name="OL" onchange="Cs()"><br>
+		Superposición reloj análogo: <input type="checkbox" name="OL" onchange="Cs()"><br>
 		<div id="cac">
-			First LED: <input name="O1" type="number" min="0" max="255" required> Last LED: <input name="O2" type="number" min="0" max="255" required><br>
+			Primer LED: <input name="O1" type="number" min="0" max="255" required> Ult. LED: <input name="O2" type="number" min="0" max="255" required><br>
 			12h LED: <input name="OM" type="number" min="0" max="255" required><br>
-			Show 5min marks: <input type="checkbox" name="O5"><br>
-			Seconds (as trail): <input type="checkbox" name="OS"><br>
+			Mostar marca 5min: <input type="checkbox" name="O5"><br>
+			Seg (rastro): <input type="checkbox" name="OS"><br>
 		</div>
-		Countdown Mode: <input type="checkbox" name="CE"><br>
-		Countdown Goal:<br>
-		Date:&nbsp;<nowrap>20<input name="CY" class="xs" type="number" min="0" max="99" required>-<input name="CI" class="xs" type="number" min="1" max="12" required>-<input name="CD" class="xs" type="number" min="1" max="31" required></nowrap><br>
-		Time:&nbsp;<nowrap><input name="CH" class="xs" type="number" min="0" max="23" required>:<input name="CM" class="xs" type="number" min="0" max="59" required>:<input name="CS" class="xs" type="number" min="0" max="59" required></nowrap><br>
-		<h3>Macro presets</h3>
-		<b>Macros have moved!</b><br>
-		<i>Presets now also can be used as macros to save both JSON and HTTP API commands.<br>
-		Just enter the preset ID below!</i>
-		<i>Use 0 for the default action instead of a preset</i><br>
+		Cuenta regresiva: <input type="checkbox" name="CE"><br>
+		Objetivo:<br>
+		Fecha:&nbsp;<nowrap>20<input name="CY" class="xs" type="number" min="0" max="99" required>-<input name="CI" class="xs" type="number" min="1" max="12" required>-<input name="CD" class="xs" type="number" min="1" max="31" required></nowrap><br>
+		Hora:&nbsp;<nowrap><input name="CH" class="xs" type="number" min="0" max="23" required>:<input name="CM" class="xs" type="number" min="0" max="59" required>:<input name="CS" class="xs" type="number" min="0" max="59" required></nowrap><br>
+		<h3>Presets de macro</h3>
+		<b>Macros ha cambiado!</b><br>
+		<i>Los Presets ahora tambien pueden ser usados como macro para salvar comandos JSON y HTTP API.<br>
+		Solo coloca el preset ID abajo!</i>
+		<i>Usar 0 para acción por defecto en lugar de un preset</i><br>
 		Alexa On/Off Preset: <input name="A0" class="m" type="number" min="0" max="250" required> <input name="A1" class="m" type="number" min="0" max="250" required><br>
 		Countdown-Over Preset: <input name="MC" class="m" type="number" min="0" max="250" required><br>
 		Timed-Light-Over Presets: <input name="MN" class="m" type="number" min="0" max="250" required><br>
-		<h3>Button actions</h3>
+		<h3>Acciones botón</h3>
 		<table style="margin: 0 auto;" id="macros">
 			<thead>
 				<tr>
-					<td>push<br>switch</td>
-					<td>short<br>on-&gt;off</td>
-					<td>long<br>off-&gt;on</td>
-					<td>double<br>N/A</td>
+					<td>presionar<br>switch</td>
+					<td>corto<br>on-&gt;off</td>
+					<td>largo<br>off-&gt;on</td>
+					<td>doble<br>N/A</td>
 				</tr>
 			</thead>
 			<tbody>
 			</tbody>
 		</table>
-		<a href="https://kno.wled.ge/features/macros/#analog-button" target="_blank">Analog Button setup</a>
-		<h3>Time-controlled presets</h3>
+		<a href="https://kno.wled.ge/features/macros/#analog-button" target="_blank">Setup botón análogo</a>
+		<h3>Presets controlados por tiempo</h3>
 		<div style="display: inline-block">
 		<table id="TMT" style="min-width:330px;"></table>
 		</div>
 		<hr>
-		<button type="button" onclick="B()">Back</button><button type="submit">Save</button>
+		<button type="button" onclick="B()">Volver</button><button type="submit">Salvar</button>
 	</form>
 </body>
 </html>
