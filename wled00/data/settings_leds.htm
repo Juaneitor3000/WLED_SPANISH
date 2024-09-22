@@ -455,14 +455,14 @@ Length: <input type="number" name="XC${i}" id="xc${i}" class="l" min="1" max="65
 			var be = "BE" + String.fromCharCode((i<10?48:55)+i);
 			c += `Button ${i} GPIO: <input type="number" name="${bt}" onchange="UI()" class="xs" value="${p}">`;
 			c += `&nbsp;<select name="${be}">`
-			c += `<option value="0" ${t==0?"selected":""}>Disabled</option>`;
-			c += `<option value="2" ${t==2?"selected":""}>Pushbutton</option>`;
-			c += `<option value="3" ${t==3?"selected":""}>Push inverted</option>`;
+			c += `<option value="0" ${t==0?"selected":""}>Desactivado</option>`;
+			c += `<option value="2" ${t==2?"selected":""}>Botón</option>`;
+			c += `<option value="3" ${t==3?"selected":""}>Botón invertido</option>`;
 			c += `<option value="4" ${t==4?"selected":""}>Switch</option>`;
-			c += `<option value="5" ${t==5?"selected":""}>PIR sensor</option>`;
+			c += `<option value="5" ${t==5?"selected":""}>Sensor PIR</option>`;
 			c += `<option value="6" ${t==6?"selected":""}>Touch</option>`;
-			c += `<option value="7" ${t==7?"selected":""}>Analog</option>`;
-			c += `<option value="8" ${t==8?"selected":""}>Analog inverted</option>`;
+			c += `<option value="7" ${t==7?"selected":""}>Análogo</option>`;
+			c += `<option value="8" ${t==8?"selected":""}>Análogo invertido</option>`;
 			c += `</select>`;
 			c += `<span style="cursor: pointer;" onclick="off('${bt}')">&nbsp;&#x2715;</span><br>`;
 			gId("btns").innerHTML = c;
@@ -687,39 +687,39 @@ Length: <input type="number" name="XC${i}" id="xc${i}" class="l" min="1" max="65
 	<form id="form_s" name="Sf" method="post">
 		<div class="toprow">
 		<div class="helpB"><button type="button" onclick="H()">?</button></div>
-		<button type="button" onclick="B()">Back</button><button type="submit">Save</button><hr>
+		<button type="button" onclick="B()">Volver</button><button type="submit">Save</button><hr>
 		</div>
-		<h2>LED &amp; Hardware setup</h2>
+		<h2>LED &amp; Config. Hardware</h2>
 		LEDs totales: <span id="lc">?</span> <span id="pc"></span><br>
-		<i>Recommended power supply for brightest white:</i><br>
+		<i>Fuente recomendada para blanco más brillante:</i><br>
 		<b><span id="psu">?</span></b><br>
 		<span id="psu2"><br></span>
 		<br>
-		Enable automatic brightness limiter: <input type="checkbox" name="ABen" onchange="enABL()" id="able"><br>
+		Habilitar limitador de brillo automático: <input type="checkbox" name="ABen" onchange="enABL()" id="able"><br>
 		<div id="abl">
-			Maximum Current: <input name="MA" type="number" class="l" min="250" max="65000" oninput="UI()" required> mA<br>
+			Corriente Máxima: <input name="MA" type="number" class="l" min="250" max="65000" oninput="UI()" required> mA<br>
 			<div id="ampwarning" class="warn" style="display: none;">
-				&#9888; Your power supply provides high current.<br>
-				To improve the safety of your setup,<br>
-				please use thick cables,<br>
-				multiple power injection points and a fuse!<br>
+				&#9888; Tu fuente provee alta corriente.<br>
+				Para mejorar la seguridad de tu instalación,<br>
+				Por favor usar cables adecuados,<br>
+				Múltiples nodos de alimntación y fusible!<br>
 			</div>
-			<i>Automatically limits brightness to stay close to the limit.<br>
-			Keep at &lt;1A if powering LEDs directly from the ESP 5V pin!<br>
-			If you are using an external power supply, enter its rating.<br>
-			(Current estimated usage: <span class="pow">unknown</span>)</i><br><br>
-			LED voltage (Max. current for a single LED):<br>
+			<i>:Limitar automáticamente la corriente para estar cerca al límite.<br>
+			Mantener a &lt;1A si alimenta LEDs directamente del pin ESP 5V!<br>
+			Si usas una fuente externa, ingresa su capacidad.<br>
+			(Uso estimado de corriente: <span class="pow">desconocido</span>)</i><br><br>
+			Tensión LED (Corriente Max. para un único LED):<br>
 			<select name="LAsel" onchange="enLA()">
-				<option value="55" selected>5V default (55mA)</option>
-				<option value="35">5V efficient (35mA)</option>
+				<option value="55" selected>5V por defecto (55mA)</option>
+				<option value="35">5V eficiente (35mA)</option>
 				<option value="30">12V (30mA)</option>
 				<option value="255">WS2815 (12mA)</option>
 				<option value="50">Custom</option>
 			</select><br>
 			<span id="LAdis" style="display: none;">Custom max. current per LED: <input name="LA" type="number" min="0" max="255" id="la" oninput="UI()" required> mA<br></span>
-			<i>Keep at default if you are unsure about your type of LEDs.</i><br>
+			<i>Mantener por defecto si no está seguro del tipo de LEDs.</i><br>
 		</div>
-		<h3>Hardware setup</h3>
+		<h3>Config. Hardware</h3>
 		<div id="mLC">Salidas LED:</div>
 		<hr class="sml">
 		<button type="button" id="+" onclick="addLEDs(1,false)">+</button>
@@ -731,9 +731,9 @@ Length: <input type="number" name="XC${i}" id="xc${i}" class="l" min="1" max="65
 			Use less than <span id="wreason">800 LEDs per output</span> for the best experience!<br>
 		</div>
 		<hr class="sml">
-		Make a segment for each output: <input type="checkbox" name="MS"><br>
+		Hacer un segmento para cada salida: <input type="checkbox" name="MS"><br>
 		Custom bus start indices: <input type="checkbox" onchange="tglSi(this.checked)" id="si"><br>
-		Use global LED buffer: <input type="checkbox" name="LD" onchange="UI()"><br>
+		User buffer LED global: <input type="checkbox" name="LD" onchange="UI()"><br>
 		<hr class="sml">
 		<div id="color_order_mapping">
 			Color Order Override:
@@ -744,7 +744,7 @@ Length: <input type="number" name="XC${i}" id="xc${i}" class="l" min="1" max="65
 		</div>
 		<hr class="sml">
 		<div id="btns"></div>
-		Disable internal pull-up/down: <input type="checkbox" name="IP"><br>
+		Desactivar pull-up/down interno: <input type="checkbox" name="IP"><br>
 		Touch threshold: <input type="number" class="s" min="0" max="100" name="TT" required><br>
 		IR GPIO: <input type="number" min="-1" max="48" name="IR" onchange="UI()" class="xs"><select name="IT" onchange="UI()">
 		<option value=0>Remote disabled</option>
@@ -813,7 +813,7 @@ Length: <input type="number" name="XC${i}" id="xc${i}" class="l" min="1" max="65
 		</select><br>
 		Tasa de refresco objetivo: <input type="number" class="s" min="1" max="120" name="FR" required> FPS
 		<hr class="sml">
-		<div id="cfg">Config template: <input type="file" name="data2" accept=".json"><button type="button" class="sml" onclick="loadCfg(d.Sf.data2)">Aplicar</button><br></div>
+		<div id="cfg">Configurar plantilla: <input type="file" name="data2" accept=".json"><button type="button" class="sml" onclick="loadCfg(d.Sf.data2)">Aplicar</button><br></div>
 		<hr>
 		<button type="button" onclick="B()">Volver</button><button type="submit">Guardar</button>
 	</form>
