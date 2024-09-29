@@ -1,9 +1,4 @@
 
-
-
-
-
-
 [platformio]
 default_envs = esp32c3dev
 ; default_envs = esp32dev

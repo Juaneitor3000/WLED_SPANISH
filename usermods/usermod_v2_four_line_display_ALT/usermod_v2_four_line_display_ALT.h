@@ -3,6 +3,7 @@
 #include "wled.h"
 #undef U8X8_NO_HW_I2C // borrowed from WLEDMM: we do want I2C hardware drivers - if possible
 #include <U8x8lib.h> // from https://github.com/olikraus/u8g2/
+
 #include "4LD_wled_fonts.c"
 
 #ifndef FLD_ESP32_NO_THREADS

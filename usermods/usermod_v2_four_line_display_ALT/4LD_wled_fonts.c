@@ -1,4 +1,8 @@
+
+
 #pragma once
+#include <stdint.h>
+#include <U8g2lib.h>
 
 //WLED custom fonts, curtesy of @Benji (https://github.com/Proto-molecule)
 
