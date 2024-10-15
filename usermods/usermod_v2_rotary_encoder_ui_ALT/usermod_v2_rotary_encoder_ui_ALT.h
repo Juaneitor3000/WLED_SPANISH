@@ -1,6 +1,7 @@
 #pragma once
 
 #include "wled.h"
+#include "../usermod_v2_four_line_display_ALT/usermod_v2_four_line_display_ALT.h"
 
 //
 // Inspired by the original v2 usermods

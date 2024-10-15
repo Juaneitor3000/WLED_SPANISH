@@ -1,7 +1,8 @@
 #pragma once
 
 #include "wled.h"
-
+#include "../usermod_v2_four_line_display/usermod_v2_four_line_display.h"
+#include "../usermod_v2_mode_sort/usermod_v2_mode_sort.h"
 //
 // Inspired by the v1 usermods
 // * rotary_encoder_change_brightness
