@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
 	<meta charset="utf-8">
 	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
@@ -339,32 +339,31 @@
 <hr class="sml">
 ${i+1}:
 <select name="LT${i}" onchange="UI(true)">${i>=maxB ? '' :
-'<option value="22" selected>WS281x</option>\
-<option value="30">SK6812/WS2814 RGBW</option>\
-<option value="31">TM1814</option>\
-<option value="24">400kHz</option>\
-<option value="25">TM1829</option>\
-<option value="26">UCS8903</option>\
-<option value="29">UCS8904 RGBW</option>\
-<option value="50">WS2801</option>\
-<option value="51">APA102</option>\
-<option value="52">LPD8806</option>\
-<option value="54">LPD6803</option>\
-<option value="53">P9813</option>\
-<option value="19">WS2811 White</option>\
-<option value="40">On/Off</option>\
-<option value="41">PWM White</option>\
-<option value="42">PWM CCT</option>\
-<option value="43">PWM RGB</option>\
-<option value="44">PWM RGBW</option>\
-<option value="45">PWM RGB+CCT</option>\
-<!--option value="46">PWM RGB+DCCT</option-->'}
-<option value="80">DDP RGB (network)</option>
-<!--option value="81">E1.31 RGB (network)</option-->
-<option value="82">Art-Net RGB (network)</option>
-<option value="88">DDP RGBW (network)</option>
+'<option value="22" selected>WS281x (Tira LED estándar)</option>\
+<option value="30">SK6812/WS2814 RGBW (Tira LED RGBW)</option>\
+<option value="31">TM1814 (LED direccionable)</option>\
+<option value="24">400kHz (Frecuencia baja)</option>\
+<option value="25">TM1829 (LED direccionable)</option>\
+<option value="26">UCS8903 (LED direccionable)</option>\
+<option value="29">UCS8904 RGBW (LED RGBW)</option>\
+<option value="50">WS2801 (SPI basado)</option>\
+<option value="51">APA102 (SPI basado)</option>\
+<option value="52">LPD8806 (SPI basado)</option>\
+<option value="54">LPD6803 (SPI basado)</option>\
+<option value="53">P9813 (SPI basado)</option>\
+<option value="19">WS2811 White (LED blanco)</option>\
+<option value="40">On/Off (Encendido/Apagado)</option>\
+<option value="41">PWM White (Blanco regulable)</option>\
+<option value="42">PWM CCT (Blanco cálido/frío)</option>\
+<option value="43">PWM RGB (RGB regulable)</option>\
+<option value="44">PWM RGBW (RGBW regulable)</option>\
+<option value="45">PWM RGB+CCT (RGB + blanco cálido/frío)</option>'}
+<option value="80">DDP RGB (Control por red)</option>
+<option value="82">Art-Net RGB (Control por red)</option>
+<option value="88">DDP RGBW (Control por red)</option>
 </select><br>
-<div id="co${i}" style="display:inline">Color Order:
+
+<div id="co${i}" style="display:inline">Orden de color:
 <select name="CO${i}">
 <option value="0">GRB</option>
 <option value="1">RGB</option>
@@ -373,21 +372,64 @@ ${i+1}:
 <option value="4">BGR</option>
 <option value="5">GBR</option>
 </select></div>
-<div id="dig${i}w" style="display:none">Swap: <select name="WO${i}"><option value="0">None</option><option value="1">W & B</option><option value="2">W & G</option><option value="3">W & R</option></select></div>
-<div id="dig${i}l" style="display:none">Clock: <select name="SP${i}"><option value="0">Slowest</option><option value="1">Slow</option><option value="2">Normal</option><option value="3">Fast</option><option value="4">Fastest</option></select></div>
+
+<div id="dig${i}w" style="display:none">Intercambio: 
+<select name="WO${i}">
+<option value="0">Ninguno</option>
+<option value="1">Blanco y Azul</option>
+<option value="2">Blanco y Verde</option>
+<option value="3">Blanco y Rojo</option>
+</select></div>
+
+<div id="dig${i}l" style="display:none">Reloj: 
+<select name="SP${i}">
+<option value="0">Más lento</option>
+<option value="1">Lento</option>
+<option value="2">Normal</option>
+<option value="3">Rápido</option>
+<option value="4">Más rápido</option>
+</select></div>
+
 <div>
-<span id="psd${i}">Start:</span> <input type="number" name="LS${i}" id="ls${i}" class="l starts" min="0" max="8191" value="${lastEnd(i)}" oninput="startsDirty[${i}]=true;UI();" required />&nbsp;
-<div id="dig${i}c" style="display:inline">Length: <input type="number" name="LC${i}" class="l" min="1" max="${maxPB}" value="1" required oninput="UI()" /></div><br>
+<span id="psd${i}">Inicio:</span> 
+<input type="number" name="LS${i}" id="ls${i}" class="l starts" min="0" max="8191" value="${lastEnd(i)}" oninput="startsDirty[${i}]=true;UI();" required />&nbsp;
+
+<div id="dig${i}c" style="display:inline">Longitud: 
+<input type="number" name="LC${i}" class="l" min="1" max="${maxPB}" value="1" required oninput="UI()" />
+</div><br>
 </div>
+
 <span id="p0d${i}">GPIO:</span><input type="number" name="L0${i}" required class="s" onchange="UI();pinUpd(this);"/>
 <span id="p1d${i}"></span><input type="number" name="L1${i}" class="s" onchange="UI();pinUpd(this);"/>
 <span id="p2d${i}"></span><input type="number" name="L2${i}" class="s" onchange="UI();pinUpd(this);"/>
 <span id="p3d${i}"></span><input type="number" name="L3${i}" class="s" onchange="UI();pinUpd(this);"/>
 <span id="p4d${i}"></span><input type="number" name="L4${i}" class="s" onchange="UI();pinUpd(this);"/>
-<div id="dig${i}r" style="display:inline"><br><span id="rev${i}">Reversed</span>: <input type="checkbox" name="CV${i}"></div>
-<div id="dig${i}s" style="display:inline"><br>Skip first LEDs: <input type="number" name="SL${i}" min="0" max="255" value="0" oninput="UI()"></div>
-<div id="dig${i}f" style="display:inline"><br>Off Refresh: <input id="rf${i}" type="checkbox" name="RF${i}"></div>
-<div id="dig${i}a" style="display:inline"><br>Auto-calculate white channel from RGB:<br><select name="AW${i}"><option value=0>None</option><option value=1>Brighter</option><option value=2>Accurate</option><option value=3>Dual</option><option value=4>Max</option></select>&nbsp;</div>
+
+<div id="dig${i}r" style="display:inline"><br>
+<span id="rev${i}">Invertido</span>: 
+<input type="checkbox" name="CV${i}">
+</div>
+
+<div id="dig${i}s" style="display:inline"><br>
+Omitir primeros LEDs: 
+<input type="number" name="SL${i}" min="0" max="255" value="0" oninput="UI()">
+</div>
+
+<div id="dig${i}f" style="display:inline"><br>
+Refresco apagado: 
+<input id="rf${i}" type="checkbox" name="RF${i}">
+</div>
+
+<div id="dig${i}a" style="display:inline"><br>
+Calcular automáticamente canal blanco desde RGB:<br>
+<select name="AW${i}">
+<option value=0>Ninguno</option>
+<option value=1>Brillante</option>
+<option value=2>Preciso</option>
+<option value=3>Doble</option>
+<option value=4>Máximo</option>
+</select>&nbsp;
+</div>
 </div>`;
 				f.insertAdjacentHTML("beforeend", cn);
 			}
@@ -569,7 +611,7 @@ Length: <input type="number" name="XC${i}" id="xc${i}" class="l" min="1" max="65
 					for (var j = -1; j <= d.max_gpio; j++) {
 						if (d.rsvd.includes(j)) continue;
 						let foundPin = d.um_p.indexOf(j);
-						let txt = (j === -1) ? "unused" : `${j}`;
+						let txt = (j === -1) ? "sin usar" : `${j}`;
 						if (foundPin >= 0 && j !== v) txt += ` used`; // already reserved pin
 						if (d.ro_gpio.includes(j)) txt += " (R/O)";
 						let opt = addOption(sel, txt, j);
@@ -603,7 +645,7 @@ Length: <input type="number" name="XC${i}" id="xc${i}" class="l" min="1" max="65
 					let led = pins.includes(i.value);
 					if (!(i.value==oldV || i.value==e.value || led)) return;
 					if (i.value == -1) {
-						i.text = "unused";
+						i.text = "sin usar";
 						return
 					}
 					i.text = i.value;
@@ -687,7 +729,7 @@ Length: <input type="number" name="XC${i}" id="xc${i}" class="l" min="1" max="65
 	<form id="form_s" name="Sf" method="post">
 		<div class="toprow">
 		<div class="helpB"><button type="button" onclick="H()">?</button></div>
-		<button type="button" onclick="B()">Volver</button><button type="submit">Save</button><hr>
+		<button type="button" onclick="B()">Atrás</button><button type="submit">Salvar</button><hr>
 		</div>
 		<h2>LED &amp; Config. Hardware</h2>
 		LEDs totales: <span id="lc">?</span> <span id="pc"></span><br>
@@ -716,7 +758,7 @@ Length: <input type="number" name="XC${i}" id="xc${i}" class="l" min="1" max="65
 				<option value="255">WS2815 (12mA)</option>
 				<option value="50">Custom</option>
 			</select><br>
-			<span id="LAdis" style="display: none;">Custom max. current per LED: <input name="LA" type="number" min="0" max="255" id="la" oninput="UI()" required> mA<br></span>
+			<span id="LAdis" style="display: none;">Corriente máxima por led personalizado: <input name="LA" type="number" min="0" max="255" id="la" oninput="UI()" required> mA<br></span>
 			<i>Mantener por defecto si no está seguro del tipo de LEDs.</i><br>
 		</div>
 		<h3>Config. Hardware</h3>
@@ -724,19 +766,19 @@ Length: <input type="number" name="XC${i}" id="xc${i}" class="l" min="1" max="65
 		<hr class="sml">
 		<button type="button" id="+" onclick="addLEDs(1,false)">+</button>
 		<button type="button" id="-" onclick="addLEDs(-1,false)">-</button><br>
-		LED Uso de memoria: <span id="m0">0</span> / <span id="m1">?</span> B<br>
+		Uso de memoria de LEDs: <span id="m0">0</span> / <span id="m1">?</span> B<br>
 		<div id="dbar" style="display:inline-block; width: 100px; height: 10px; border-radius: 20px;"></div><br>
 		<div id="ledwarning" class="warn" style="display: none;">
-			&#9888; You might run into stability or lag issues.<br>
-			Use less than <span id="wreason">800 LEDs per output</span> for the best experience!<br>
+			&#9888; Podrías enfrentar problemas de estabilidad o retraso.<br>
+			Usa menos de <span id="wreason">800 LEDs por salida</span> para la mejor experiencia.<br>
 		</div>
 		<hr class="sml">
 		Hacer un segmento para cada salida: <input type="checkbox" name="MS"><br>
-		Custom bus start indices: <input type="checkbox" onchange="tglSi(this.checked)" id="si"><br>
-		User buffer LED global: <input type="checkbox" name="LD" onchange="UI()"><br>
+		Índices de inicio personalizados para buses: <input type="checkbox" onchange="tglSi(this.checked)" id="si"><br>
+		Usar un búfer global de LEDs: <input type="checkbox" name="LD" onchange="UI()"><br>
 		<hr class="sml">
 		<div id="color_order_mapping">
-			Color Order Override:
+			Anulación del orden de colores:
 			<div id="com_entries"></div>
 			<hr class="sml">
 			<button type="button" id="com_add" onclick="addCOM()">+</button>
@@ -745,77 +787,77 @@ Length: <input type="number" name="XC${i}" id="xc${i}" class="l" min="1" max="65
 		<hr class="sml">
 		<div id="btns"></div>
 		Desactivar pull-up/down interno: <input type="checkbox" name="IP"><br>
-		Touch threshold: <input type="number" class="s" min="0" max="100" name="TT" required><br>
+		Umbral táctil: <input type="number" class="s" min="0" max="100" name="TT" required><br>
 		IR GPIO: <input type="number" min="-1" max="48" name="IR" onchange="UI()" class="xs"><select name="IT" onchange="UI()">
-		<option value=0>Remote disabled</option>
-		<option value=1>24-key RGB</option>
-		<option value=2>24-key with CT</option>
-		<option value=3>40-key blue</option>
-		<option value=4>44-key RGB</option>
-		<option value=5>21-key RGB</option>
-		<option value=6>6-key black</option>
-		<option value=7>9-key red</option>
-		<option value=8>JSON remote</option>
+		<option value=0>Remoto desactivado</option>
+		<option value=1>RGB de 24 teclas</option>
+		<option value=2>24 teclas con CT</option>
+		<option value=3>Azul de 40 teclas</option>
+		<option value=4>RGB de 44 teclas</option>
+		<option value=5>RGB de 21 teclas</option>
+		<option value=6>Negro de 6 teclas</option>
+		<option value=7>Rojo de 9 teclas</option>
+		<option value=8>JSON remoto</option>
 		</select><span style="cursor: pointer;" onclick="off('IR')">&nbsp;&#x2715;</span><br>
-		Apply IR change to main segment only: <input type="checkbox" name="MSO"><br>
-		<div id="json" style="display:none;">JSON file: <input type="file" name="data" accept=".json"><button type="button" class="sml" onclick="uploadFile('/ir.json')">Upload</button><br></div>
+		Aplicar cambio de IR solo al segmento principal: <input type="checkbox" name="MSO"><br>
+		<div id="json" style="display:none;">Archivo JSON: <input type="file" name="data" accept=".json"><button type="button" class="sml" onclick="uploadFile('/ir.json')">Subir</button><br></div>
 		<a href="https://kno.wled.ge/interfaces/infrared/" target="_blank">IR info</a><br>
-		Relay GPIO: <input type="number" min="-1" max="48" name="RL" onchange="UI()" class="xs"> Invert <input type="checkbox" name="RM"><span style="cursor: pointer;" onclick="off('RL')">&nbsp;&#x2715;</span><br>
+		GPIO Relé: <input type="number" min="-1" max="48" name="RL" onchange="UI()" class="xs"> Invertir <input type="checkbox" name="RM"><span style="cursor: pointer;" onclick="off('RL')">&nbsp;&#x2715;</span><br>
 		<hr class="sml">
 		<h3>Predeterminados</h3>
 		Encender leds luego de reset: <input type="checkbox" name="BO"><br>
 		Brillo predeterminado: <input name="CA" type="number" class="m" min="0" max="255" required> (0-255)<br><br>
-		Aplicar preset <input name="BP" type="number" class="m" min="0" max="250" required> at boot (0 uses defaults)
+		Aplicar preset <input name="BP" type="number" class="m" min="0" max="250" required>  al iniciar (0 usa los valores de arriba)
 		<br><br>
-		Use Gamma correction for color: <input type="checkbox" name="GC"> (strongly recommended)<br>
-		Use Gamma correction for brightness: <input type="checkbox" name="GB"> (not recommended)<br>
-		Use Gamma value: <input name="GV" type="number" class="m" placeholder="2.8" min="1" max="3" step="0.1" required><br><br>
+		Usar corrección Gamma para color: <input type="checkbox" name="GC"> (altamente recomendado)<br>
+		Usar corrección Gamma para brillo: <input type="checkbox" name="GB"> (no recomendado)<br>
+		Usar valor Gamma: <input name="GV" type="number" class="m" placeholder="2.8" min="1" max="3" step="0.1" required><br><br>
 		Factor de brillo: <input name="BF" type="number" class="m" min="1" max="255" required> %
 		<h3>Transiciones</h3>
 		Crossfade: <input type="checkbox" name="TF"><br>
-		Effect blending: <input type="checkbox" name="EB"><br>
+		Mezcla de efectos: <input type="checkbox" name="EB"><br>
 		Tiempo de Transición: <input name="TD" type="number" class="xl" min="0" max="65500"> ms<br>
-		Enable Palette transitions: <input type="checkbox" name="PF"><br>
-		<i>Ciclo aleatorio</i> Tiempo de paleta : <input name="TP" type="number" class="m" min="1" max="255"> s<br>
+		Transiciones de paleta: <input type="checkbox" name="PF"><br>
+		<i>Ciclo aleatorio</i> Tiempo de paleta: <input name="TP" type="number" class="m" min="1" max="255"> s<br>
 		<h3>Luz temporizada</h3>
 		Duración predeterminada: <input name="TL" type="number" class="m" min="1" max="255" required> min<br>
 		Brillo objetivo predeterminado: <input name="TB" type="number" class="m" min="0" max="255" required><br>
 		Modo:
 		<select name="TW">
-			<option value="0">Wait and set</option>
-			<option value="1">Fade</option>
-			<option value="2">Fade Color</option>
-			<option value="3">Sunrise</option>
+			<option value="0">Esperar y configurar</option>
+			<option value="1">Desvanecer</option>
+			<option value="2">Desvanecer color</option>
+			<option value="3">Amanecer</option>
 		</select>
 		<h3>Manejo de blanco</h3>
 		Corrección de balance de blanco: <input type="checkbox" name="CCT"><br>
 		<div id="wc">
-			Global override for Auto-calculate white:<br>
+			Anulación global para el cálculo automático de blanco:<br>
 			<select name="AW">
-				<option value=255>Disabled</option>
-				<option value=0>None</option>
-				<option value=1>Brighter</option>
-				<option value=2>Accurate</option>
+				<option value=255>Desactivado</option>
+				<option value=0>Ninguno</option>
+				<option value=1>Más brillante</option>
+				<option value=2>Preciso</option>
 				<option value=3>Dual</option>
-				<option value=4>Max</option>
+				<option value=4>Máximo</option>
 			</select>
 			<br>
-			Calculate CCT from RGB: <input type="checkbox" name="CR"><br>
-			CCT additive blending: <input type="number" class="s" min="0" max="100" name="CB" required> %
+			Calcular CCT desde RGB:  <input type="checkbox" name="CR"><br>
+			Mezcla aditiva de CCT: <input type="number" class="s" min="0" max="100" name="CB" required> %
 		</div>
 		<h3>Advanzado</h3>
-		Palette blending:
+		Envoltura de paleta:
 		<select name="PB">
-			<option value="0">Linear (wrap if moving)</option>
-			<option value="1">Linear (always wrap)</option>
-			<option value="2">Linear (never wrap)</option>
-			<option value="3">None (not recommended)</option>
+			<option value="0">Lineal (envolver si se mueve)</option>
+			<option value="1">Lineal (siempre envolver)</option>
+			<option value="2">Lineal (nunca envolver)</option>
+			<option value="3">Lineal (nunca envolver)</option>
 		</select><br>
 		Tasa de refresco objetivo: <input type="number" class="s" min="1" max="120" name="FR" required> FPS
 		<hr class="sml">
 		<div id="cfg">Configurar plantilla: <input type="file" name="data2" accept=".json"><button type="button" class="sml" onclick="loadCfg(d.Sf.data2)">Aplicar</button><br></div>
 		<hr>
-		<button type="button" onclick="B()">Volver</button><button type="submit">Guardar</button>
+		<button type="button" onclick="B()">Atrás</button><button type="submit">Salvar</button>
 	</form>
 	<div id="toast"></div>
 </body>

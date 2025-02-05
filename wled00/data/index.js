@@ -418,19 +418,19 @@ function presetError(empty)
 
 	var cn = `<div class="pres c" ${empty?'style="padding:8px;margin-top: 16px;"':'onclick="pmtLast=0;loadPresets();" style="cursor:pointer;padding:8px;margin-top: 16px;"'}>`;
 	if (empty)
-		cn += `You have no presets yet!`;
+		cn += `Aun no tienes Presets!`;
 	else
-		cn += `Sorry, there was an issue loading your presets!`;
+		cn += `Lo siento, hubo un problema cargando tus presets!`;
 
 	if (hasBackup) {
 		cn += `<br><br>`;
 		if (empty)
-			cn += `However, there is backup preset data of a previous installation available.<br>
-			(Saving a preset will hide this and overwrite the backup)`;
+			cn += `Sin embargo, hay un respaldo disponible de tus presets de una instalación previa.<br>
+			(Guardar un preset ocultará esto y sobrescribirá la copia de seguridad)`;
 		else
-			cn += `Here is a backup of the last known good state:`;
+			cn += `Aqui hay un respaldo del ultimo estado correcto:`;
 		cn += `<textarea id="bck"></textarea><br>
-			<button class="btn" onclick="cpBck()">Copy to clipboard</button>`;
+			<button class="btn" onclick="cpBck()">Copiar a portapapeles</button>`;
 	}
 	cn += `</div>`;
 	gId('pcont').innerHTML = cn;
